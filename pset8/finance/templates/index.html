@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+        <h1 class="index-h">Username: {{ username }}</h1>
+        {% if companiesNames %}
+        <table class="table table-bordered table-striped index-table">
+            <thead>
+                <tr>
+                <th>Company Name</th>
+                <th>Number of Shares</th>
+                <th>Price</th>
+                <th>Total Value of Holding</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for i in range(companiesNames|length) %}
+                <tr>
+                    <td>{{ companiesNames[i] }}</td>
+                    <td>{{ numberOfShares[i] }}</td>
+                    <td>{{ prices[i]|usd }}</td>
+                    <td>{{ totalValueHolding[i]|usd }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        <h3 class="index-h">Current Cash Balance: {{ currentCashBalance|usd }}</h3>
+        <h3 class="index-h">Cash & Stock's Total Value: {{ cashAndStocksTotalValue|usd }}</h3>
+        {% elif not companiesNames %}
+        <h3>You Haven't Purchased Any Stocks!</h3>
+        {% endif %}
+{% endblock %}

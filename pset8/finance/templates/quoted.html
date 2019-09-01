@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div class="quoted-wrapper">
+        <div class="quoted-containter">
+            <h1 class="quoted-h1">Company Name: {{ name }}</h1>
+            <h1 class="quoted-h1">Price: {{ price | usd }}</h1>
+            <h1 class="quoted-h1">Symbol (Ticker): {{ symbol }}</h1>
+        </div>
+    </div>
+{% endblock %}

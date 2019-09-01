@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+        <h1 class="index-h">Username: {{ username }}</h1>
+        {% if symbols %}
+        <table class="table table-bordered table-striped index-table">
+            <thead>
+                <tr>
+                <th>Symbol</th>
+                <th>Bought or Sold</th>
+                <th>Number</th>
+                <th>Price</th>
+                <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for i in range(symbols|length) %}
+                <tr>
+                    <td>{{ symbols[i]["symbol"] }}</td>
+                    <td>{{ buyorsells[i] }}</td>
+                    <td>{{ numbers[i]["number"] }}</td>
+                    <td>{{ prices[i]["price"]|usd }}</td>
+                    <td>{{ dates[i]["date"] }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+        {% elif not symbols %}
+        <h3>Your History is Clear!</h3>
+        {% endif %}
+{% endblock %}
