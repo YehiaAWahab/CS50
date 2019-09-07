@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+        {% if tasks %}
+        <table class="table table-bordered table-striped index-table">
+            <thead>
+                <tr>
+                <th>Task</th>
+                <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for i in range(tasks|length) %}
+                <tr>
+                    <td>{{ tasks[i]["task"] }}</td>
+                    <td>{{ tasks[i]["date"] }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% elif not companiesNames %}
+        <h3>You Don't Have Any Tasks!</h3>
+        {% endif %}
+{% endblock %}

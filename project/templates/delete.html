@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete
+{% endblock %}
+
+{% block main %}
+    <h3>Mark a task as finished.</h3>
+
+    <form action="/delete" method="post">
+        <div class="input-group mb-3">
+            <select class="custom-select" id="inputGroupSelect02" name="current_tasks">
+                <option value="" selected disabled>--Choose a task--</option>
+                {% for i in range(tasks|length) %}
+                    <option value="{{ tasks[i]["task"] }}">{{ tasks[i]["task"] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Delete</button>
+    </form>
+{% endblock %}
